@@ -1,0 +1,92 @@
+#!/bin/bash
+
+set -eu
+
+# check for root
+if [ `whoami` != "root" ] || [ ! ${!SUDO_USER[@]} ]; then
+    echo "You must run with sudo." 1>&2
+    exit 1
+fi
+
+# check for my ssh key
+if [ ! ${!SSH_AUTH_SOCK[@]} ]; then
+    echo "You must be running an ssh-agent (or perhaps give '-E' to sudo)." 1>&2
+    exit 1;
+fi
+
+ssh_key_fingerprint="f3:2d:05:e2:52:66:1c:e7:4f:2c:4e:0b:6d:d1:6d:79"
+if ! ssh-add -l | grep "$ssh_key_fingerprint" &>/dev/null; then
+    echo "You must have your key loaded." 1>&2
+    exit 1
+fi
+
+# setup Caps Lock as Control key
+if which xmodmap; then
+    echo "setingup Caps Lock as Control key..."
+    xmodmap -e 'keycode 66 = Control_L'
+    xmodmap -e 'clear Lock'
+    xmodmap -e 'add Control = Control_L'
+fi
+
+# setup ignore recommends
+config_file="/etc/apt/apt.conf.d/50no-install-recommends"
+if [ ! -f "$config_file" ]; then
+    echo "Turning off install-recommends..."
+    if ! echo "APT::Install-Recommends \"false\";" > "$config_file"; then
+        echo "Error turning off install-recommends." 1>&2
+        exit 1
+    fi
+fi
+
+apt-get update
+
+# install git
+if ! which git >/dev/null; then
+    echo "Installing git..."
+    if ! apt-get -y install git >/dev/null; then
+        echo "Error installing git." 1>&2
+        exit 1
+    fi
+fi
+
+# setup ruby
+if ! which ruby >/dev/null; then
+    echo "Installing ruby 1.9..."
+    if ! apt-get -y install ruby1.9.3 ruby1.9.1-full >/dev/null; then
+        echo "Error installing ruby 1.9." 1>&2
+        exit 1
+    fi
+fi
+
+# install chef gem
+if ! which chef-solo >/dev/null; then
+    echo "Installing chef..."
+    if ! gem install chef --no-rdoc --no-ri >/dev/null; then
+        echo "Error installing chef." 1>&2
+        exit 1
+    fi
+fi
+
+# clone chef-repo
+if ! [ -d "$HOME/src/chef-repo" ]; then
+    if ! [ -d "$HOME/src" ]; then
+        install -m 0755 -o $SUDO_UID -g $SUDO_GID -d "$HOME/src"
+    fi
+    pushd "$HOME/src" >/dev/null
+    if ! sudo -E -u $SUDO_USER git clone git@github.com:pjstadig/chef-repo.git >/dev/null; then
+        echo "Failed to clone chef-repo." 1>&2
+        exit 1
+    fi
+    popd >/dev/null
+fi
+
+# run chef-solo
+pushd "$HOME/src/chef-repo" >/dev/null
+hostname=`hostname`
+if [ -f "config/$hostname.json" ]; then
+    chef-solo -c config/solo.rb -j "config/$hostname.json"
+else
+    echo "'`hostname`' does not have an attribute file." 1>&2
+    exit 1
+fi
+popd >/dev/null
