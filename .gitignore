@@ -5,6 +5,8 @@
 !/.gitexcludes
 !/.gitignore
 !/.profile
+!/bin/
+!/bin/.gitignore
 !/.emacs.d/
 !/.emacs.d/*
 !/.emacs.d/elpa/
