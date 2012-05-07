@@ -1,0 +1,31 @@
+#!/bin/bash
+if [ ! -e ~/src/conkeror ]; then
+    if [ ! -e ~/src ]; then
+        mkdir ~/src
+    fi
+    pushd ~/src >/dev/null
+    if ! git clone git://repo.or.cz/conkeror.git; then
+        popd >/dev/null
+        echo "!!! Failed to clone conkeror repo"
+        exit 1
+    fi
+    popd >/dev/null
+    echo "Done setting up conkeror"
+fi
+
+if [ ! -e ~/src/conkeror/conkeror-spawn-helper ]; then
+    pushd ~/src/conkeror >/dev/null
+    if ! make; then
+        popd >/dev/null
+        echo "!!! Failed to compile conkeror-spawn-helper"
+        exit 2
+    fi
+    popd >/dev/null
+    echo "Done setting up compiling conkeror-spawn-helper"
+fi
+
+if [ -x /usr/bin/xulrunner ]; then
+    exec /usr/bin/xulrunner ~/src/conkeror/application.ini "$@"
+else
+    exec /usr/bin/firefox -app ~/src/conkeror/application.ini "$@"
+fi
