@@ -1,0 +1,9 @@
+#!/usr/bin/ruby
+File.open("/home/paul/.skype-notify.log", "a") do |f|
+  f.puts ARGV.inspect
+end
+
+name, message = ARGV
+if message =~ /paul/i
+  system "notify-send -i /usr/share/icons/skype.png \"#{name} says:\" \"#{message}\""
+end
