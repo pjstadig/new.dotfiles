@@ -32,9 +32,14 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+case "$TERM" in
+    xterm) export TERM=xterm-256color;;
+    screen) export TERM=screen-256color
+esac
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|xterm-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -104,4 +109,11 @@ fi
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+
+which keychain >/dev/null && keychain --agents ssh,gpg -Q -q id_rsa
+
+hostname=`uname -n`
+if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then
+    . "$HOME/.bashrc.$hostname"
 fi

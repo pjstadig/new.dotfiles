@@ -8,15 +8,37 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+case "$TERM" in
+    xterm) export TERM=xterm-256color;;
+    screen) export TERM=screen-256color
+esac
+
+which keychain >/dev/null && eval `keychain --eval --agents ssh,gpg -Q -q`
+
+export VISUAL="/usr/bin/emacs -nw"
+export EDITOR="/usr/bin/emacs -nw"
+export BROWSER="$HOME/bin/conkeror"
+
+if [ -x VBoxManage ] && ! VBoxManage list systemproperties |
+    grep "Default machine folder" |
+    grep "/\\.vboxen$" >/dev/null; then
+    VBoxManage setproperty machinefolder ~/.vboxen
+fi
+
+hostname=`uname -n`
+if [ ! -z "$hostname" ] && [ -f "$HOME/.profile.$hostname" ]; then
+    . "$HOME/.profile.$hostname"
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
 fi

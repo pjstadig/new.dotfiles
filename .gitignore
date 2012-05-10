@@ -1,10 +1,11 @@
 *
+!/.bash_aliases
 !/.bash_logout
-!/.bashrc
+!/.bashrc*
 !/.gitconfig
 !/.gitexcludes
 !/.gitignore
-!/.profile
+!/.profile*
 !/bin/
 !/bin/.gitignore
 !/.emacs.d/
