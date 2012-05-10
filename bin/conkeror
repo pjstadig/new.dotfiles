@@ -1,4 +1,21 @@
 #!/bin/bash
+
+# Skype does this lovely thing where it calls out to firefox (not
+# gnome-www-browser; not x-www-browser) and tries to open the link in
+# an existing instance of firefox with the -remote argument, and if
+# firefox returns with a non-zero exit code (because there is no
+# instance running), then it tries to just start a new instance of
+# firefox with that URL.
+#
+# Well, when firefox is called with -app for conkeror, it does not
+# return non-zero with -remote (even though it fails), so Skype
+# assumes that the link was opened successfully (even though it
+# wasn't).  Here we just short circuit that so that we can get
+# straight to the opening of the link.
+if [ "$1" = "-remote" ]; then
+    exit 1
+fi
+
 if [ ! -e ~/src/conkeror ]; then
     if [ ! -e ~/src ]; then
         mkdir ~/src
