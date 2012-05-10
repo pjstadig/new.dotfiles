@@ -9,6 +9,8 @@
 !/.xsessionrc
 !/bin/
 !/bin/.gitignore
+!/.config/
+!/.config/.gitignore
 !/.emacs.d/
 !/.emacs.d/*
 !/.emacs.d/elpa/
