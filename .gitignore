@@ -6,6 +6,7 @@
 !/.gitexcludes
 !/.gitignore
 !/.profile*
+!/.Xresources*
 !/.xsessionrc
 !/bin/
 !/bin/.gitignore
