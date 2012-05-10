@@ -1,0 +1,3 @@
+which ctrl-fix && ctrl-fix &
+which xcompmgr && xcompmgr &
+which xmonad && xmonad &

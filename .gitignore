@@ -6,6 +6,7 @@
 !/.gitexcludes
 !/.gitignore
 !/.profile*
+!/.xsessionrc
 !/bin/
 !/bin/.gitignore
 !/.emacs.d/
