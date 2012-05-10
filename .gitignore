@@ -18,4 +18,6 @@
 !/.emacs.d/elpa/*
 !/.emacs.d/elpa-to-submit/
 !/.emacs.d/elpa-to-submit/*
+!/.xmonad/
+!/.xmonad/.gitignore
 *~
