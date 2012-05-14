@@ -10,7 +10,7 @@
 	default = tracking
 [core]
 	excludesfile = ~/.gitexcludes
-	editor = /usr/bin/emacsclient -nw
+	editor = /usr/bin/emacs -nw
 [alias]
 	co = checkout
 	br = branch
