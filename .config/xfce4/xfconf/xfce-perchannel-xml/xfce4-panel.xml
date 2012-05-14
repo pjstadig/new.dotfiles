@@ -13,6 +13,7 @@
         <value type="int" value="5"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
+        <value type="int" value="1"/>
         <value type="int" value="8"/>
         <value type="int" value="26"/>
         <value type="int" value="27"/>
@@ -66,5 +67,6 @@
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-9" type="string" value="xfsm-logout-plugin"/>
+    <property name="plugin-1" type="string" value="weather"/>
   </property>
 </channel>
