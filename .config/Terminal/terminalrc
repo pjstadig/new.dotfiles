@@ -39,3 +39,5 @@ MiscHighlightUrls=TRUE
 FontName=Monospace 10
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
+
