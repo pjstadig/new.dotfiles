@@ -20,16 +20,6 @@ if ! ssh-add -l | grep "$ssh_key_fingerprint" &>/dev/null; then
     exit 1
 fi
 
-# setup ignore recommends
-config_file="/etc/apt/apt.conf.d/50no-install-recommends"
-if [ ! -f "$config_file" ]; then
-    echo "Turning off install-recommends..."
-    if ! echo "APT::Install-Recommends \"no\";" > "$config_file"; then
-        echo "Error turning off install-recommends." 1>&2
-        exit 1
-    fi
-fi
-
 apt-get update
 
 # install git
