@@ -1,44 +1,56 @@
-[org/gnome/gnome-panel/layout]
+
+[layout]
 object-id-list=['object-0', 'object-2', 'object-1', 'object-3', 'object-5', 'object-4']
 toplevel-id-list=['top-panel']
 
-[org/gnome/gnome-panel/layout/objects/object-0]
+[layout/objects/indicators]
+object-iid='IndicatorAppletCompleteFactory::IndicatorAppletComplete'
+pack-index=0
+pack-type='end'
+toplevel-id='top-panel'
+
+[layout/objects/menu-bar]
+object-iid='PanelInternalFactory::MenuBar'
+pack-index=0
+toplevel-id='top-panel'
+
+[layout/objects/object-0]
 object-iid='IndicatorAppletFactory::IndicatorApplet'
 pack-index=2
 pack-type='end'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/objects/object-1]
+[layout/objects/object-1]
 object-iid='WnckletFactory::WorkspaceSwitcherApplet'
 pack-index=4
 pack-type='end'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/objects/object-2]
+[layout/objects/object-2]
 object-iid='FastUserSwitchAppletFactory::FastUserSwitchApplet'
 pack-index=0
 pack-type='end'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/objects/object-3]
+[layout/objects/object-3]
 object-iid='NotificationAreaAppletFactory::NotificationArea'
 pack-index=3
 pack-type='end'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/objects/object-4]
+[layout/objects/object-4]
 object-iid='ClockAppletFactory::ClockApplet'
 pack-index=1
 pack-type='end'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/objects/object-5]
+[layout/objects/object-5]
 object-iid='PanelInternalFactory::MenuBar'
 pack-index=0
 pack-type='start'
 toplevel-id='top-panel'
 
-[org/gnome/gnome-panel/layout/toplevels/top-panel]
+[layout/toplevels/top-panel]
 animation-speed='fast'
 auto-hide=false
 auto-hide-size=1
