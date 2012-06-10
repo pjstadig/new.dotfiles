@@ -1,0 +1,5 @@
+#!/bin/bash
+which dconf &>/dev/null || { echo "Please install dconf-tools package"; exit 1; }
+
+dump_dir=~/.config/dconf/
+dconf dump /org/gnome/gnome-panel/ > "$dump_dir/gnome-panel.dump"
