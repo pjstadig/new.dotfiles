@@ -6,6 +6,18 @@ define_webjump("c", "http://dev.clojure.org/jira/browse/%s");
 
 url_remoting_fn = load_url_in_new_buffer;
 
+// add favicons
+require("favicon.js");
+add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
+read_buffer_show_icons = true;
+
+// we'd like to see the # of buffers being loaded
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+
+// but really we'd also like to know how many buffers
+// are present and which is the current
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
 var user_agents =
   { "conkeror": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:12.0) Gecko/20100101 conkeror/1.0pre",
     "firefox": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0",
