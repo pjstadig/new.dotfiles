@@ -1,7 +1,8 @@
 (defvar other-packages (list 'color-theme
                              'color-theme-solarized
                              'clojure-mode
-                             'clojure-test-mode)
+                             'clojure-test-mode
+                             'org)
   "Other libraries that should be installed.")
 
 (defun other-elpa-install ()
@@ -18,6 +19,7 @@
   (unless package-archive-contents (package-refresh-contents))
   (other-elpa-install))
 
+(setq home-dir (getenv "HOME"))
 (color-theme-solarized-dark)
 
 (require 'clojure-mode)
@@ -41,3 +43,23 @@
                     ("(\\(ns\\+\\)" (1 font-lock-keyword-face))
                     ("(\\(try\\+\\)" (1 font-lock-keyword-face))
                     ("(\\(throw\\+\\)" (1 font-lock-keyword-face))))))))
+
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-directory (concat home-dir "/org"))
+(setq org-agenda-files (list org-directory))
+(setq org-completion-use-ido 't)
+(setq org-capture-templates
+      '(("t" "Todo" entry (file "inbox.org")
+         "* TODO %i%?")
+        ("p" "Project" entry (file "gtd.org")
+         "* %i%? :project:")
+        ("j" "Journal" entry (file+datetree "journal.org")
+         "* %i%?\n Entered on %T")))
+(setq org-refile-targets `((,(concat home-dir "/org/gtd.org") . (:level . 1))))
+(setq org-todo-keywords
+       '((sequence "TODO" "|" "DONE" "WAITING")))
+
+(setq org-mobile-directory (concat home-dir "/Dropbox/mobileorg"))
+(setq org-mobile-files nil)
+(setq org-mobile-inbox-for-pull (concat home-dir "/org/inbox.org"))
+(setq org-mobile-force-id-on-agenda-items nil)
