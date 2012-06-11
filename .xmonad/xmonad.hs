@@ -21,4 +21,5 @@ main = xmonad $ xfceConfig
                                    , ("M-p", spawn "dmenu_run")
                                    , ("M-S-<Return>", spawn "raise-or-run terminal x-terminal-emulator")
                                    , ("M-z", spawn "swarp 10000 10000")
-                                   , ("M-s", spawn "wmctrl -s 1; skyyy")]
+                                   , ("M-s", spawn "wmctrl -s 1; skyyy")
+                                   , ("M-<F2>", spawn "gnome-panel-control --run-dialog")]
