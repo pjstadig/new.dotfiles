@@ -21,4 +21,5 @@
 !/.emacs.d/elpa-to-submit/*
 !/.xmonad/
 !/.xmonad/.gitignore
+!/org
 *~
