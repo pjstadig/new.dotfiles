@@ -1,0 +1,4 @@
+#!/bin/bash
+mouse_id=`xinput list | grep Microsoft | head -n 1 | cut -f2 | cut -d= -f2`
+xinput --set-button-map $mouse_id 3 2 1
+xrandr --output VGA1 --auto --output LVDS1 --off
