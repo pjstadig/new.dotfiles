@@ -2,7 +2,7 @@
                              'color-theme-solarized
                              'clojure-mode
                              'clojure-test-mode
-                             'org)
+                             'org-mode)
   "Other libraries that should be installed.")
 
 (defun other-elpa-install ()
