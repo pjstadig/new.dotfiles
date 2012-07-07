@@ -1,3 +1,5 @@
+(set-face-attribute 'default nil :family "Inconsolata" :height 110)
+
 (defvar other-packages (list 'color-theme
                              'color-theme-solarized
                              'clojure-mode
