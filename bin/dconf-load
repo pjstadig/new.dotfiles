@@ -1,5 +1,6 @@
 #!/bin/bash
 which dconf &>/dev/null || { echo "Please install dconf-tools package"; exit 1; }
 
+dconf reset -f /org/gnome/gnome-panel/
 load_dir=~/.config/dconf/
 cat "$load_dir/gnome-panel.dump" | dconf load /org/gnome/gnome-panel/
