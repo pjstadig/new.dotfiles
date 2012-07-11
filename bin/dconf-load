@@ -2,6 +2,10 @@
 which dconf &>/dev/null || { echo "Please install dconf-tools package"; exit 1; }
 
 dconf reset -f /org/gnome/gnome-panel/
+dconf reset -f /org/gnome/deja-dup/
+dconf reset -f /com/canonical/indicator/power/
 load_dir=~/.config/dconf/
 cat "$load_dir/gnome-panel.dump" | dconf load /org/gnome/gnome-panel/
+cat "$load_dir/deja-dup.dump" | dconf load /org/gnome/deja-dup/
+cat "$load_dir/power.dump" | dconf load /com/canonical/indicator/power/
 dconf update

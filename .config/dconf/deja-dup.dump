@@ -1,0 +1,7 @@
+
+[/]
+backend='u1'
+prompt-check='disabled'
+
+[s3]
+folder='$HOSTNAME'
