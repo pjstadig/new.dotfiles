@@ -17,7 +17,7 @@ main = xmonad $ xfceConfig
                 , focusFollowsMouse = False
                 }
                 `additionalKeysP` [("M-e", spawn "raise-or-run emacs /usr/bin/emacs")
-                                   , ("M-c", spawn "raise-or-run conkeror conkeror")
+                                   , ("M-c", spawn "raise-or-run firefox conkeror")
                                    , ("M-p", spawn "dmenu_run")
                                    , ("M-S-<Return>", spawn "raise-or-run terminal x-terminal-emulator")
                                    , ("M-z", spawn "swarp 10000 10000")
