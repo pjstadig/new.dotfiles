@@ -1,25 +1,25 @@
 [user]
-	email = paul@stadig.name
-	name = Paul Stadig
+        email = paul@stadig.name
+        name = Paul Stadig
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
 [push]
-	default = tracking
+        default = tracking
 [core]
-	excludesfile = ~/.gitexcludes
-	editor = /usr/bin/emacs -nw
+        excludesfile = ~/.gitexcludes
+        editor = /usr/bin/emacs -nw
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
+        co = checkout
+        br = branch
+        ci = commit
+        st = status
+        unstage = reset HEAD --
+        last = log -1 HEAD
 [diff "clojure"]
       xfuncname = "^\\(.*"
 [github]
-	user = pjstadig
-	token = !cat ~/.github.token
+        user = pjstadig
+        token = !cat ~/.github.token
