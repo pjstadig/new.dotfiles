@@ -32,3 +32,5 @@ interactive("user-agent", "Pick a user agent from the list of presets",
                 $completer = agent_completer));
               set_user_agent(user_agents[ua]);
             });
+
+download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
