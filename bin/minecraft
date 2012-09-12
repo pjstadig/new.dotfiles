@@ -1,0 +1,9 @@
+#!/bin/bash
+
+[ ! -e ~/.minecraft/minecraft.jar ] && echo "Please download minecraft and put it in ~/.minecraft/" && exit 1
+
+JAVA_CMD=/usr/lib/jvm/java-6-openjdk-amd64/jre/bin/java
+
+[ ! -x $JAVA_CMD ] && echo "Please install openjdk-6-jre" && exit 2
+
+$JAVA_CMD -Xmx1024m -Xms512m -cp ~/.minecraft/minecraft.jar net.minecraft.LauncherFrame
