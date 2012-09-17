@@ -117,3 +117,7 @@ hostname=`uname -n`
 if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then
     . "$HOME/.bashrc.$hostname"
 fi
+
+if [ -f "$HOME/.bashrc.local" ]; then
+    . "$HOME/.bashrc.local"
+fi
