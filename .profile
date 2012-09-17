@@ -18,7 +18,16 @@ case "$TERM" in
     screen) export TERM=screen-256color
 esac
 
-which keychain >/dev/null && eval `keychain --eval --agents ssh,gpg -Q -q`
+auth_sock=/tmp/$USER-ssh-agent
+if [ ! -e "$auth_sock" ]; then
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        eval `ssh-agent --eval`
+    fi
+    ln -sf "$SSH_AUTH_SOCK" "$auth_sock"
+else
+    export SSH_KEEP_SOCK=1
+fi
+export SSH_AUTH_SOCK=$auth_sock
 
 export VISUAL="/usr/bin/emacs -nw"
 export EDITOR="/usr/bin/emacs -nw"

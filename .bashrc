@@ -118,7 +118,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-which keychain >/dev/null && keychain --agents ssh,gpg -Q -q id_rsa
+if ! ssh-add -l | grep id_rsa &>/dev/null; then
+    [ -f ~/.ssh/id_rsa ] && ssh-add ~/.ssh/id_rsa &>/dev/null
+fi
 
 hostname=`uname -n`
 if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then
