@@ -5,6 +5,13 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Kind of hackish, but ssh servers are usually configured to allow
+# receiving LC_* env vars
+if [ ! -z "$SSH_CONNECTION" -a -z "$LC_TMUX_ATTACHED" ]; then
+    export LC_TMUX_ATTACHED=1
+    exec tmux att
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
