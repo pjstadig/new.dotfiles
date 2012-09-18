@@ -9,7 +9,7 @@
 # receiving LC_* env vars
 if [ ! -z "$SSH_CONNECTION" -a -z "$LC_TMUX_ATTACHED" ]; then
     export LC_TMUX_ATTACHED=1
-    exec tmux att
+    exec tmux -S /tmp/$USER-tmux att
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
