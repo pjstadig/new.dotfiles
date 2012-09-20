@@ -90,8 +90,11 @@
      (erc-services-mode 1)
      (add-to-list 'erc-modules 'highlight-nicknames 'spelling)
      (add-hook 'erc-connect-pre-hook (lambda (x) (erc-update-modules)))
+     (set-face-foreground 'erc-default-face "#ffffff")
      (set-face-foreground 'erc-input-face "dim gray")
-     (set-face-foreground 'erc-my-nick-face "blue")))
+     (set-face-foreground 'erc-my-nick-face "IndianRed")
+     (set-face-attribute 'erc-my-nick-face nil :weight 'bold)
+     (setq erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels)))))
 
 (ignore-errors
   (load (expand-file-name "~/.passwords.el"))
