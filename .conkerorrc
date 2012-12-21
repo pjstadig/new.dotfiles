@@ -34,3 +34,20 @@ interactive("user-agent", "Pick a user agent from the list of presets",
             });
 
 download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
+
+// Clean up when moving from one page to the next
+function clean_minibuffer(buffer) {
+  try {
+    isearch-done(buffer.window, false);
+  } catch(e){}
+  try {
+    caret_mode(buffer, false);
+  } catch(e){}
+  try {
+    minibuffer_abort (buffer.window);
+  } catch(e){}
+}
+
+add_hook("buffer_loaded_hook", function(buffer) {
+  clean_minibuffer(buffer);
+});
