@@ -1,7 +1,7 @@
 require("page-modes/gmail.js");
 
 define_webjump("java", "http://javadocs.org/%s/");
-define_webjump("j", "http://sonian.onjira.com/browse/ENG-%s");
+define_webjump("j", "https://sonian.atlassian.net/browse/ENG-%s");
 define_webjump("c", "http://dev.clojure.org/jira/browse/%s");
 
 url_remoting_fn = load_url_in_new_buffer;
