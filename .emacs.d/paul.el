@@ -59,7 +59,7 @@
          "* %i%?\n Entered on %T")))
 (setq org-refile-targets `((,(concat home-dir "/org/gtd.org") . (:level . 1))))
 (setq org-todo-keywords
-       '((sequence "TODO" "|" "DONE" "WAITING")))
+      '((sequence "TODO" "|" "DONE" "WAITING")))
 
 (setq org-mobile-directory (concat home-dir "/Dropbox/mobileorg"))
 (setq org-mobile-files nil)
