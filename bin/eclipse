@@ -1,0 +1,9 @@
+#!/bin/bash
+eclipse=~/.local/opt/eclipse/eclipse
+
+if [ ! -x $eclipse ]; then
+    echo "Please download an install eclipse"
+    exit 1
+fi
+
+exec $eclipse $@
