@@ -1,0 +1,18 @@
+#!/bin/bash
+tarsnap=/usr/local/bin/tarsnap
+
+if [ ! -x $tarsnap ]; then
+    echo "Please download an install tarsnap"
+    exit 1
+fi
+
+$tarsnap -cvf \"gpg-keys-`date +\%Y\%m\%d`\" --no-print-stats /home/paul/.gnupg/
+exec $tarsnap -cvf \"home-`date +\%Y\%m\%d`\" \
+              --exclude /home/paul/.\* \
+              --exclude /home/paul/eclipse/ \
+              --exclude /home/paul/perl5/ \
+              --exclude /home/paul/Downloads/ \
+              --exclude /home/paul/Dropbox/ \
+              --exclude /home/paul/src/ \
+              --exclude /home/paul/Ubuntu\ One/ \
+              /home/paul/
