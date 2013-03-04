@@ -1,4 +1,5 @@
 require("page-modes/gmail.js");
+require("adblockplus.js");
 
 define_webjump("java", "http://javadocs.org/%s/");
 define_webjump("j", "https://sonian.atlassian.net/browse/ENG-%s");
