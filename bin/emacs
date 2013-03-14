@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -x ~/src/emacs-24.2/src/emacs ]; then
+    if [ ! -x /usr/bin/emacs ]; then
+        echo "Please install emacs or build it from source"
+        exit 1
+    else
+        emacs=/usr/bin/emacs
+    fi
+else
+    emacs=~/src/emacs-24.2/src/emacs
+fi
+
+#echo $emacs "$@"
+exec $emacs "$@"

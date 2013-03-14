@@ -16,7 +16,7 @@ main = xmonad $ xfceConfig
                 , modMask    = mod4Mask
                 , focusFollowsMouse = False
                 }
-                `additionalKeysP` [("M-e", spawn "raise-or-run emacs /usr/bin/emacs")
+                `additionalKeysP` [("M-e", spawn "raise-or-run emacs emacs")
                                    , ("M-c", spawn "raise-or-run conkeror conkeror")
                                    , ("M-p", spawn "dmenu_run")
                                    , ("M-S-<Return>", spawn "raise-or-run terminal x-terminal-emulator")
