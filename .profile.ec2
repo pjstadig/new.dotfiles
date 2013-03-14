@@ -1,0 +1,1 @@
+tmux -S /tmp/$USER-tmux new-window "exec less /etc/motd" 2>/dev/null
