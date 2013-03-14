@@ -4,7 +4,8 @@
                              'color-theme-solarized
                              'clojure-mode
                              'clojure-test-mode
-                             'org)
+                             'org
+                             'nrepl)
   "Other libraries that should be installed.")
 
 (defun other-elpa-install ()
@@ -23,6 +24,15 @@
 
 (setq home-dir (getenv "HOME"))
 (color-theme-solarized-dark)
+
+(defun conditional-source-path (dir)
+  (let ((full-dir (concat home-dir "/src/" dir "/")))
+    (when (file-exists-p full-dir)
+     (add-to-list 'load-path full-dir))))
+
+;; add load paths for source, if available
+(conditional-source-path "clojure-mode")
+(conditional-source-path "nrepl.el")
 
 (require 'clojure-mode)
 (autoload 'clojure-test-mode "clojure-test-mode" "Clojure test mode" t)
@@ -51,6 +61,8 @@
                  ;;   (macro* 1)
                  ;;   (fn* 1))
                  ))))
+
+(require 'nrepl)
 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-directory (concat home-dir "/org"))
