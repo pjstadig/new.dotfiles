@@ -44,7 +44,13 @@
                     ("(\\(def[^[:space:]]*\\)" (1 font-lock-keyword-face))
                     ("(\\(ns\\+\\)" (1 font-lock-keyword-face))
                     ("(\\(try\\+\\)" (1 font-lock-keyword-face))
-                    ("(\\(throw\\+\\)" (1 font-lock-keyword-face))))))))
+                    ("(\\(throw\\+\\)" (1 font-lock-keyword-face))))
+                 ;; (define-clojure-indent
+                 ;;   ;; binding forms
+                 ;;   (macro 1)
+                 ;;   (macro* 1)
+                 ;;   (fn* 1))
+                 ))))
 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-directory (concat home-dir "/org"))
