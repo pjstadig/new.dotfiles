@@ -1,4 +1,4 @@
-(set-face-attribute 'default nil :family "Inconsolata" :height 110)
+(set-face-attribute 'default nil :family "Mensch" :height 105)
 
 (defvar other-packages (list 'color-theme
                              'color-theme-solarized

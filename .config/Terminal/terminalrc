@@ -36,8 +36,8 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
-FontName=Inconsolata Medium 12
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+FontName=Mensch 11
 
