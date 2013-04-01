@@ -2,7 +2,7 @@
 eclipse=~/.local/opt/eclipse/eclipse
 
 if [ ! -x $eclipse ]; then
-    echo "Please download an install eclipse"
+    echo "Please download and install eclipse"
     exit 1
 fi
 
