@@ -2,8 +2,13 @@
 maven=~/.local/opt/apache-maven/bin/mvn
 
 if [ ! -x $maven ]; then
-    echo "Please download an install maven"
-    exit 1
+    mkdir -p ~/.local/opt/
+    pushd ~/.local/opt/
+    wget -O apache-maven-3.0.5.tar.gz http://www.bizdirusa.com/mirrors/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
+    tar xzvf apache-maven-3.0.5.tar.gz
+    rm apache-maven-3.0.5.tar.gz
+    ln -s apache-maven-3.0.5 apache-maven
+    popd
 fi
 
 exec $maven $@
