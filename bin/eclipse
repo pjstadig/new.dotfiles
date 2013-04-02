@@ -2,8 +2,12 @@
 eclipse=~/.local/opt/eclipse/eclipse
 
 if [ ! -x $eclipse ]; then
-    echo "Please download and install eclipse"
-    exit 1
+    mkdir -p ~/.local/opt/
+    pushd ~/.local/opt/
+    wget -O eclipse.tar.gz http://www.gtlib.gatech.edu/pub/eclipse/technology/epp/downloads/release/juno/SR2/eclipse-java-juno-SR2-linux-gtk-x86_64.tar.gz
+    tar xzvf eclipse.tar.gz
+    rm eclipse.tar.gz
+    popd
 fi
 
 exec $eclipse $@
