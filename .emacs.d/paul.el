@@ -101,7 +101,8 @@
            erc-autojoin-channels-alist
            '(("freenode.net" "#clojure" "#raxacoricofallapatorius")
              ("irc.sa2s.us" "#safe" "#devs" "#search"))
-           erc-prompt-for-nickserv-password nil)
+           erc-prompt-for-nickserv-password nil
+           erc-ignore-list '("callen"))
      (require 'erc-services)
      (require 'erc-spelling)
      (erc-services-mode 1)
