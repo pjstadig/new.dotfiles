@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# Usage: /home/paul/bin/skype-notify %sname %smessage
 File.open("/home/paul/.skype-notify.log", "a") do |f|
   f.puts ARGV.inspect
 end
