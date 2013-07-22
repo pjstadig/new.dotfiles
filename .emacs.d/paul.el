@@ -99,7 +99,7 @@
            erc-nick "pjstadig"
            erc-autojoin-timing :ident
            erc-autojoin-channels-alist
-           '(("freenode.net" "#clojure" "#raxacoricofallapatorius")
+           '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell")
              ("irc.sa2s.us" "#safe" "#devs" "#search"))
            erc-prompt-for-nickserv-password nil
            erc-ignore-list '("callen"))
