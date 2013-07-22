@@ -6,8 +6,8 @@ if [ ! -x $tarsnap ]; then
     exit 1
 fi
 
-$tarsnap -cvf \"gpg-keys-`date +\%Y\%m\%d`\" --no-print-stats /home/paul/.gnupg/
-exec $tarsnap -cvf \"home-`date +\%Y\%m\%d`\" \
+$tarsnap -cvf "gpg-keys-`date +\%Y\%m\%d`" --no-print-stats /home/paul/.gnupg/
+exec $tarsnap -cvf "home-`date +\%Y\%m\%d`" \
               --exclude /home/paul/.\* \
               --exclude /home/paul/eclipse/ \
               --exclude /home/paul/perl5/ \
