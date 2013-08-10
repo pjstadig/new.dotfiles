@@ -88,6 +88,8 @@
 (add-hook 'erc-mode-hook '(lambda ()
                             (erc-scrolltobottom-mode t)))
 
+(setq erc-fools nil)
+
 (eval-after-load 'erc
   '(progn
      (setq erc-prompt ">"
@@ -100,7 +102,7 @@
            erc-autojoin-timing :ident
            erc-autojoin-channels-alist
            '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell")
-             ("irc.sa2s.us" "#safe" "#devs" "#search"))
+             ("irc.sa2s.us" "#safe" "#devs" "#search" "#ea"))
            erc-prompt-for-nickserv-password nil
            erc-ignore-list '("callen"))
      (require 'erc-services)
