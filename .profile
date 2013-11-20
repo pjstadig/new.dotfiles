@@ -39,6 +39,8 @@ if [ -x VBoxManage ] && ! VBoxManage list systemproperties |
     VBoxManage setproperty machinefolder ~/.vboxen
 fi
 
+[ -e /etc/profile.d/nix.sh ] && source /etc/profile.d/nix.sh
+
 hostname=`uname -n`
 if [ ! -z "$hostname" ] && [ -f "$HOME/.profile.$hostname" ]; then
     . "$HOME/.profile.$hostname"
