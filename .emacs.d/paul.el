@@ -28,7 +28,7 @@
 (defun conditional-source-path (dir)
   (let ((full-dir (concat home-dir "/src/" dir "/")))
     (when (file-exists-p full-dir)
-     (add-to-list 'load-path full-dir))))
+      (add-to-list 'load-path full-dir))))
 
 ;; add load paths for source, if available
 (conditional-source-path "clojure-mode")
@@ -88,6 +88,8 @@
 (add-hook 'erc-mode-hook '(lambda ()
                             (erc-scrolltobottom-mode t)))
 
+(setq erc-fools nil)
+
 (eval-after-load 'erc
   '(progn
      (setq erc-prompt ">"
@@ -99,8 +101,8 @@
            erc-nick "pjstadig"
            erc-autojoin-timing :ident
            erc-autojoin-channels-alist
-           '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell")
-             ("irc.sa2s.us" "#safe" "#devs" "#search"))
+           '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell" "#cville")
+             ("irc.sa2s.us" "#safe" "#devs" "#search" "#ea"))
            erc-prompt-for-nickserv-password nil
            erc-ignore-list '("callen"))
      (require 'erc-services)
@@ -139,3 +141,12 @@
 
 (add-hook 'erc-text-matched-hook 'call-libnotify)
 (setq pcomplete-cycle-completions nil)
+
+;; Cribbed from https://github.com/briprowe/.emacs.d to fix the ERC
+;; scroll-to-bottom problem in Emacs 24
+(add-hook 'erc-mode-hook 'my-erc-mode-hook)
+
+(defun my-erc-mode-hook ()
+  (set (make-local-variable 'scroll-conservatively) 101)
+  (set (make-local-variable 'scroll-step) 1)
+  (local-set-key (kbd "C-l") 'recenter-top-bottom))
