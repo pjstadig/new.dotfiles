@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -x ~/src/ledger/ledger ]; then
+   exec ~/src/ledger/ledger "$@"
+fi
+
+exec /usr/bin/ledger "$@"
