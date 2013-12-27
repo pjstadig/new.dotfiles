@@ -22,6 +22,9 @@
 !/.emacs.d/elpa-to-submit/*
 !/.fonts/
 !/.gnupg/
+!/.i3/
+!/.i3/*
+!/.i3status.conf
 !/.ssh/
 !/.ssh/config
 !/.xmonad/
