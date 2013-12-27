@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 tarsnap=/usr/local/bin/tarsnap
 
 if [ ! -x $tarsnap ]; then

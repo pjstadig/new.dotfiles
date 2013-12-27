@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Skype does this lovely thing where it calls out to firefox (not
 # gnome-www-browser; not x-www-browser) and tries to open the link in

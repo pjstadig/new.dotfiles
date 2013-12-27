@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 maven=~/.local/opt/apache-maven/bin/mvn
 
 if [ ! -x $maven ]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 emacs_version=24.3
 emacs=~/src/emacs-$emacs_version/src/emacs

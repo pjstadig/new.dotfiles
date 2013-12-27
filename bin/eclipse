@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 eclipse=~/.local/opt/eclipse/eclipse
 
 if [ ! -x $eclipse ]; then
