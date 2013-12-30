@@ -1,2 +1,7 @@
-#!/usr/bin/env bash
-wmctrl -x -a $1 || $2
+#!/bin/sh
+count=`ps aux | grep -c $1`
+if [ $count -eq 3 ]; then
+    i3-msg "exec $1"
+else
+    i3-msg "[class=\"(?i)$1\"] focus"
+fi
