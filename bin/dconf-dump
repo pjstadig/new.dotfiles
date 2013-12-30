@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-which dconf &>/dev/null || { echo "Please install dconf-tools package"; exit 1; }
-
-dump_dir=~/.config/dconf/
-dconf dump /org/gnome/gnome-panel/ > "$dump_dir/gnome-panel.dump"
-dconf dump /org/gnome/deja-dup/ > "$dump_dir/deja-dup.dump"
-dconf dump /com/canonical/indicator/power/ > "$dump_dir/power.dump"
