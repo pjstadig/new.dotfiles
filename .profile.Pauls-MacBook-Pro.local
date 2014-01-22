@@ -1,0 +1,3 @@
+# -*- mode: shell-script -*-
+# setup the PATH for homebrew
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
