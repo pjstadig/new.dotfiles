@@ -5,7 +5,7 @@
                              'clojure-mode
                              'clojure-test-mode
                              'org
-                             'nrepl)
+                             'cider)
   "Other libraries that should be installed.")
 
 (defun other-elpa-install ()
