@@ -40,7 +40,8 @@
 (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (paredit-mode t)
-                                (whitespace-mode t)))
+                                ;;(whitespace-mode t)
+                                ))
 
 (eval-after-load 'clojure-mode
   '(add-hook 'clojure-mode-hook
