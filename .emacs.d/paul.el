@@ -23,7 +23,7 @@
   (other-elpa-install))
 
 (setq home-dir (getenv "HOME"))
-(color-theme-solarized-dark)
+(color-theme-zenburn)
 
 (defun conditional-source-path (dir)
   (let ((full-dir (concat home-dir "/src/" dir "/")))
