@@ -124,6 +124,10 @@ if ! ssh-add -l | grep id_rsa &>/dev/null; then
     [ -f ~/.ssh/id_rsa ] && ssh-add ~/.ssh/id_rsa &>/dev/null
 fi
 
+if ! ssh-add -l | grep outpace_rsa &>/dev/null; then
+    [ -f ~/.ssh/outpace_rsa ] && ssh-add ~/.ssh/outpace_rsa &>/dev/null
+fi
+
 hostname=`uname -n`
 if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then
     . "$HOME/.bashrc.$hostname"
