@@ -10,7 +10,7 @@
         default = tracking
 [core]
         excludesfile = ~/.gitexcludes
-        editor = /usr/bin/emacs -nw
+        editor = emacs -nw
         whitespace = trailing-space,space-before-tab,tab-in-indent
 [alias]
         co = checkout
