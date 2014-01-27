@@ -40,6 +40,7 @@ if [ -x VBoxManage ] && ! VBoxManage list systemproperties |
 fi
 
 [ -e /etc/profile.d/nix.sh ] && source /etc/profile.d/nix.sh
+[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 hostname=`uname -n`
 if [ ! -z "$hostname" ] && [ -f "$HOME/.profile.$hostname" ]; then
