@@ -32,7 +32,7 @@
 
 ;; add load paths for source, if available
 (conditional-source-path "clojure-mode")
-(conditional-source-path "nrepl.el")
+;;(conditional-source-path "nrepl.el")
 
 (require 'clojure-mode)
 (autoload 'clojure-test-mode "clojure-test-mode" "Clojure test mode" t)
@@ -63,7 +63,7 @@
                  ;;   (fn* 1))
                  ))))
 
-(require 'nrepl)
+(require 'cider)
 
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-directory (concat home-dir "/org"))
