@@ -1,7 +1,6 @@
 (set-face-attribute 'default nil :family "Mensch" :height 105)
 
 (defvar other-packages (list 'color-theme
-                             'color-theme-solarized
                              'clojure-mode
                              'clojure-test-mode
                              'org
@@ -23,7 +22,19 @@
   (other-elpa-install))
 
 (setq home-dir (getenv "HOME"))
-(color-theme-solarized-dark)
+
+(defun plist-to-alist (the-plist)
+  (defun get-tuple-from-plist (the-plist)
+    (when the-plist
+      (cons (car the-plist) (cadr the-plist))))
+
+  (let ((alist '()))
+    (while the-plist
+      (add-to-list 'alist (get-tuple-from-plist the-plist))
+      (setq the-plist (cddr the-plist)))
+    alist))
+
+(color-theme-zenburn)
 
 (defun conditional-source-path (dir)
   (let ((full-dir (concat home-dir "/src/" dir "/")))
