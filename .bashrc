@@ -128,6 +128,11 @@ if ! ssh-add -l | grep outpace_rsa &>/dev/null; then
     [ -f ~/.ssh/outpace_rsa ] && ssh-add ~/.ssh/outpace_rsa &>/dev/null
 fi
 
+if [ -d $HOME/.rbenv/bin ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
 hostname=`uname -n`
 if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then
     . "$HOME/.bashrc.$hostname"
