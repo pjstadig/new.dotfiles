@@ -12,6 +12,8 @@ if [ ! -z "$SSH_CONNECTION" -a -z "$LC_TMUX_ATTACHED" ]; then
     which tmux && exec tmux -S /tmp/$USER-tmux att
 fi
 
+[ -f $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases ] && source $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

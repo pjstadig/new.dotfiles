@@ -41,6 +41,7 @@ fi
 
 [ -e /etc/profile.d/nix.sh ] && source /etc/profile.d/nix.sh
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+[ -d $HOME/src/outpace/universe ] && export STARWOOD_HOME=$HOME/src/outpace/universe
 
 hostname=`uname -n`
 if [ ! -z "$hostname" ] && [ -f "$HOME/.profile.$hostname" ]; then
