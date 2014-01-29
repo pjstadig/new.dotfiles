@@ -41,8 +41,5 @@ if [ ! -e ~/src/conkeror/conkeror-spawn-helper ]; then
     echo "Done setting up compiling conkeror-spawn-helper"
 fi
 
-if [ -x ~/bin/xulrunner ]; then
-    exec ~/bin/xulrunner ~/src/conkeror/application.ini "$@"
-else
-    exec /usr/bin/firefox -app ~/src/conkeror/application.ini "$@"
-fi
+exec ~/bin/xulrunner ~/src/conkeror/application.ini "$@"
+
