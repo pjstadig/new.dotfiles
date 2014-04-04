@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if [ ! -d ~/xulrunner-26.0 ]; then
-   wget -O ~/xulrunner.tar.bz2 http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/latest/runtimes/xulrunner-26.0.en-US.linux-x86_64.tar.bz2
-   tar xjvf xulrunner.tar.bz2
-   mv xulrunner xulrunner-26.0
+if [ ! -d ~/.local/opt/xulrunner-28.0 ]; then
+    if ! [ -e /tmp/xulrunner.tar.bz2 ]; then
+        wget -O /tmp/xulrunner.tar.bz2 http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/latest/runtimes/xulrunner-28.0.en-US.linux-x86_64.tar.bz2
+    fi
+    tar xjvf /tmp/xulrunner.tar.bz2 -C ~/.local/opt/
+    mv ~/.local/opt/xulrunner ~/.local/opt/xulrunner-28.0
 fi
 
-exec ~/xulrunner-26.0/xulrunner "$@"
+exec ~/.local/opt/xulrunner-28.0/xulrunner "$@"
