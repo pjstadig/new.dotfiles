@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+ledger_dir="/home/paul/documents/ledger"
+backup_file="$ledger_dir/backups/ledger.dat.`date +%Y%m%d%H%M%S`"
+
+mkdir -p $ledger_dir/backups
+mv $ledger_dir/ledger.dat $backup_file
+ledger -f $backup_file print --date-format %F --sort date >$ledger_dir/ledger.dat
