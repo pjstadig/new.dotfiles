@@ -1,7 +1,6 @@
 (set-face-attribute 'default nil :family "Mensch" :height 105)
 
 (defvar other-packages (list 'color-theme
-                             'color-theme-solarized
                              'clojure-mode
                              'clojure-test-mode
                              'org
@@ -23,12 +22,12 @@
   (other-elpa-install))
 
 (setq home-dir (getenv "HOME"))
-(color-theme-solarized-dark)
+(color-theme-zenburn)
 
 (defun conditional-source-path (dir)
   (let ((full-dir (concat home-dir "/src/" dir "/")))
     (when (file-exists-p full-dir)
-     (add-to-list 'load-path full-dir))))
+      (add-to-list 'load-path full-dir))))
 
 ;; add load paths for source, if available
 (conditional-source-path "clojure-mode")
@@ -99,8 +98,7 @@
            erc-nick "pjstadig"
            erc-autojoin-timing :ident
            erc-autojoin-channels-alist
-           '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell")
-             ("irc.sa2s.us" "#safe" "#devs" "#search"))
+           '(("freenode.net" "#clojure" "#raxacoricofallapatorius" "#haskell"))
            erc-prompt-for-nickserv-password nil
            erc-ignore-list '("callen"))
      (require 'erc-services)
