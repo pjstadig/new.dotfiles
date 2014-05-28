@@ -1,79 +1,69 @@
-;;; init.el --- Where all the magic begins
-;;
-;; Part of the Emacs Starter Kit
-;;
-;; This is the first thing to get loaded.
-;;
-;; "Emacs outshines all other editing software in approximately the
-;; same way that the noonday sun does the stars. It is not just bigger
-;; and brighter; it simply makes everything else vanish."
-;; -Neal Stephenson, "In the Beginning was the Command Line"
+;;; My general personalizations
 
-;; Turn off mouse interface early in startup to avoid momentary display
-;; You really don't need these; trust me.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-;; Load path etc.
-
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
-;; Load up ELPA, the package manager
-
-(add-to-list 'load-path dotfiles-dir)
-
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
-
-(require 'package)
-(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
-                  ("elpa" . "http://tromey.com/elpa/")))
-  (add-to-list 'package-archives source t))
-(package-initialize)
-(require 'starter-kit-elpa)
-
-;; These should be loaded on startup rather than autoloaded on demand
-;; since they are likely to be used in every session
+;; Random stuff
 
 (require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
 
-;; backport some functionality to Emacs 22 if needed
-(require 'dominating-file)
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "conkeror"
+      custom-file (expand-file-name "~/.emacs.d/custom.el")
+      ispell-extra-args '("--keyboard=dvorak")
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      org-default-notes-file "~/.dotfiles/.notes.org"
+      org-remember-default-headline 'bottom
+      org-completion-use-ido t
+      twittering-username "technomancy"
+      epa-armor t
+      visible-bell t
+      inhibit-startup-message t)
 
-;; Load up starter kit customizations
+(when window-system
+  (setq scroll-conservatively 1))
 
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-lisp)
-(require 'starter-kit-perl)
-(require 'starter-kit-ruby)
-(require 'starter-kit-js)
+(load custom-file t)
 
-(regen-autoloads)
-(load custom-file 'noerror)
+(add-to-list 'load-path user-emacs-directory)
 
-;; You can keep system- or user-specific customizations here
-(setq system-specific-config (concat dotfiles-dir system-name ".el")
-      user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name))
-(add-to-list 'load-path user-specific-dir)
+;; Packages
 
-(if (file-exists-p system-specific-config) (load system-specific-config))
-(if (file-exists-p user-specific-dir)
-  (mapc #'load (directory-files user-specific-dir nil ".*el$")))
-(if (file-exists-p user-specific-config) (load user-specific-config))
+(when (not (require 'package nil t))
+  (require 'package "package-23.el"))
 
-;;; init.el ends here
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
+(when (null package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages '(better-defaults clojure-mode paredit cider
+                                      idle-highlight-mode ;; ido-ubiquitous
+                                      find-file-in-project magit
+                                      elisp-slime-nav parenface-plus
+                                      markdown-mode yaml-mode page-break-lines
+                                      scpaste diminish smex))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+(mapc 'load (directory-files (concat user-emacs-directory user-login-name)
+                             t "^[^#].*el$"))
+
+;; activation
+
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+
+(require 'ido-hacks "ido-hacks.el") ; still not on marmalade uuuugh
+(ido-hacks-mode)
+
+(global-set-key (kbd "M-x") 'smex) ; has to happen after ido-hacks-mode
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(column-number-mode t)
+(global-linum-mode)
