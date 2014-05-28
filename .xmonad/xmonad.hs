@@ -16,10 +16,10 @@ main = xmonad $ xfceConfig
                 , modMask    = mod4Mask
                 , focusFollowsMouse = False
                 }
-                `additionalKeysP` [("M-e", spawn "raise-or-run emacs emacs")
-                                   , ("M-c", spawn "raise-or-run conkeror conkeror")
+                `additionalKeysP` [("M-e", spawn "exec raise-or-run emacs emacs")
+                                   , ("M-c", spawn "exec raise-or-run conkeror conkeror")
                                    , ("M-p", spawn "dmenu_run")
-                                   , ("M-S-<Return>", spawn "raise-or-run terminal x-terminal-emulator")
+                                   , ("M-S-<Return>", spawn "exec raise-or-run terminal x-terminal-emulator")
                                    , ("M-z", spawn "swarp 10000 10000")
                                    , ("M-s", spawn "wmctrl -s 1; skyyy")
                                    , ("M-<F2>", spawn "gnome-panel-control --run-dialog")]
