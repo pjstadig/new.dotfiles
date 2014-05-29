@@ -1,4 +1,4 @@
-(load (expand-file-name "~/.slack-password.el"))
+(ignore-errors (load (expand-file-name "~/.slack-password.el")))
 
 (defun pjs-slack ()
   (interactive)
