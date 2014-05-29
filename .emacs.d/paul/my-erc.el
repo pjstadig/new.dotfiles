@@ -1,8 +1,10 @@
 (setq erc-prompt ">"
       erc-fill-column 75
       erc-header-line-format nil
-      erc-track-exclude-types '("324" "329" "332" "333" "353" "477" "MODE"
-                                "JOIN" "PART" "QUIT" "NICK")
+      erc-hide-list '("MODE")
+      erc-track-exclude-types (append '("324" "329" "332" "333" "353" "477"
+                                        "AWAY" "JOIN" "PART" "QUIT" "NICK")
+                                      erc-hide-list)
       erc-lurker-threshold-time 3600
       erc-track-priority-faces-only t
       erc-autojoin-timing :ident
@@ -10,13 +12,13 @@
       erc-server-send-ping-interval 45
       erc-server-send-ping-timeout 180
       erc-server-reconnect-timeout 60
-      erc-server-flood-penalty 1000000
-      erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#clojure"
-                                     "#leiningen" "#seajure" "#clojuredocs"))
+      erc-autojoin-channels-alist '(("freenode.net" "#clojure"
+                                     "#raxacoricofallapatorius" "#cville"))
       erc-prompt-for-nickserv-password nil
       erc-accidental-paste-threshold-seconds 0.5
       erc-fill-function 'erc-fill-static
-      erc-fill-static-center 14)
+      erc-fill-static-center 14
+      erc-nick "pjstadig")
 
 (delete 'erc-fool-face 'erc-track-faces-priority-list)
 (delete '(erc-nick-default-face erc-fool-face) 'erc-track-faces-priority-list)
@@ -58,4 +60,3 @@
   (setq erc-modified-channels-alist nil)
   (erc-modified-channels-update)
   (erc-modified-channels-display))
-
