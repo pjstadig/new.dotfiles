@@ -29,19 +29,12 @@
                   (untabify (point-min) (point-max))
                   (indent-region (point-min) (point-max))))
 
-(global-set-key (kbd "C-c b")
-                (defun pnh-blog () (interactive)
-                  (shell-command (format "rake post POST=%s"
-                                         (car (split-string (buffer-name)
-                                                            "\\."))))))
 (eval-after-load 'paredit
-  ;; need a binding that works in the terminal
+  ;; need bindings that works in the terminal
   '(progn
      (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
-     (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
-
-;; atreus bindings
-(global-set-key (kbd "C-x '") 'delete-other-windows)
-(global-set-key (kbd "C-x ,") 'split-window-below)
-(global-set-key (kbd "C-x .") 'split-window-right)
-(global-set-key (kbd "C-x l") 'delete-window)
+     (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-M-]") 'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-[") 'paredit-backward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-}") 'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-{") 'paredit-backward-barf-sexp)))
