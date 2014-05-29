@@ -30,9 +30,11 @@
                   (indent-region (point-min) (point-max))))
 
 (eval-after-load 'paredit
-  ;; need a binding that works in the terminal
+  ;; need bindings that works in the terminal
   '(progn
      (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
      (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)
      (define-key paredit-mode-map (kbd "C-M-]") 'paredit-forward-barf-sexp)
-     (define-key paredit-mode-map (kbd "C-M-[") 'paredit-backward-barf-sexp)))
+     (define-key paredit-mode-map (kbd "C-M-[") 'paredit-backward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-}") 'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-{") 'paredit-backward-barf-sexp)))
