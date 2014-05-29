@@ -33,7 +33,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
+             '("melpa" . "http://melpa-stable.milkbox.net/packages/"))
 (package-initialize)
 
 (when (null package-archive-contents)
