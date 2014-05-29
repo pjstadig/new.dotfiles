@@ -4,9 +4,7 @@
 
 (require 'cl)
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "conkeror"
-      custom-file (expand-file-name "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el")
       ispell-extra-args '("--keyboard=dvorak")
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
