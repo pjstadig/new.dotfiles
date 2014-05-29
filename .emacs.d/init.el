@@ -36,8 +36,8 @@
 (when (null package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(better-defaults clojure-mode paredit cider
-                                      idle-highlight-mode ;; ido-ubiquitous
+(defvar my-packages '(better-defaults clojure-mode clojure-test-mode paredit
+                                      cider idle-highlight-mode
                                       find-file-in-project magit
                                       elisp-slime-nav parenface-plus
                                       markdown-mode yaml-mode page-break-lines
