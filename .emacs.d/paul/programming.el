@@ -4,7 +4,7 @@
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
 
-(setq linum-format "%5d ")
+(setq linum-format "%d ")
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'page-break-lines-mode)
 (add-hook 'prog-mode-hook (defun pnh-add-watchwords ()
