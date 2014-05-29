@@ -13,7 +13,6 @@
       org-default-notes-file "~/.dotfiles/.notes.org"
       org-remember-default-headline 'bottom
       org-completion-use-ido t
-      twittering-username "technomancy"
       epa-armor t
       visible-bell t
       inhibit-startup-message t)
