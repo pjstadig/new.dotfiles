@@ -15,70 +15,6 @@
 (set-face-foreground 'vertical-border "white")
 (set-face-background 'vertical-border "white")
 
-;; themes
-
-(defun zb ()
-  (interactive)
-  (unless (package-installed-p 'zenburn-theme)
-    (package-install 'zenburn-theme))
-  (load-theme 'zenburn)
-  (set-face-background 'vertical-border "black")
-  (set-face-foreground 'vertical-border "black")
-  (require 'hl-line)
-  (set-face-background 'hl-line "gray17")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black")
-            (set-face-background 'diff-refine-change "grey10")))
-  (set-face-foreground 'eshell-prompt "turquoise"))
-
-(defun tw ()
-  (interactive)
-  (unless (package-installed-p 'twilight-theme)
-    (package-install 'twilight-theme))
-  (load-theme 'twilight)
-  (set-face-background 'vertical-border "black")
-  (set-face-foreground 'vertical-border "black")
-  (require 'hl-line)
-  (set-face-foreground 'eshell-prompt "turquoise1")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black")
-            (set-face-background 'diff-refine-change "grey10")))
-  (set-face-background 'hl-line "black"))
-
-(defun mk ()
-  (interactive)
-  (unless (package-installed-p 'monokai-theme)
-    (package-install 'monokai-theme))
-  (load-theme 'monokai)
-  (set-face-background 'vertical-border "black")
-  (set-face-foreground 'vertical-border "black")
-  (require 'hl-line)
-  (set-face-foreground 'eshell-prompt "turquoise1")
-  (set-face-background 'hl-line "black")
-  (eval-after-load 'diff-mode
-    '(set-face-background 'diff-refine-change "gray18"))
-  (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black")))
-
-(defun db ()
-  (interactive)
-  (load-theme 'deeper-blue)
-  (set-face-background 'hl-line "dark slate gray")
-  (eval-after-load 'magit
-    '(progn (set-face-background 'magit-item-highlight "black"))))
-
-(defun bb ()
-  "Black for use with glasstty in -nw"
-  (interactive)
-  (set-face-background 'vertical-border "bright green")
-  (set-face-foreground 'vertical-border "bright green")
-  (set-face-background 'hl-line "black")
-  (eval-after-load 'magit
-    '(set-face-background 'magit-item-highlight "black")))
-
-(eval-after-load 'hl-line
-  '(set-face-background 'hl-line "darkseagreen2"))
-
 ;; TODO: port to dabbrevs
 (defun disapproval () (interactive) (insert "ಠ_ಠ"))
 (defun eyeroll () (interactive) (insert "◔_◔"))
@@ -100,6 +36,7 @@
 ;; monochrome? seriously?
 (eval-after-load 'diff-mode
   '(progn
+     (set-face-foreground 'diff-refine-change "white smoke")
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
 
@@ -139,10 +76,22 @@
 (add-hook 'ido-setup-hook 'jf-ido-define-keys)
 
 (if (<= (display-color-cells) 8)
-  (eval-after-load 'paren-face
-    '(set-face-foreground paren-face "magenta"))
+    (eval-after-load 'paren-face
+      '(set-face-foreground paren-face "magenta"))
   (when (string= "fbterm" (getenv "TERM"))
     (load "term/xterm")
     (xterm-register-default-colors)))
 
 (setq whitespace-style '(face trailing lines-tail tabs))
+
+(load-theme 'tango-dark)
+(set-face-foreground 'highlight nil)
+(require 'hl-line)
+(eval-after-load 'hl-line
+  '(progn
+     (set-face-foreground 'hl-line "white smoke")
+     (set-face-background 'hl-line "gray18")))
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-item-highlight nil)
+     (set-face-background 'magit-item-highlight "gray18")))
