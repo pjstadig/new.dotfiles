@@ -37,13 +37,13 @@
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-refine-change "white smoke")
-     (set-face-foreground 'diff-added "green4")
-     (set-face-foreground 'diff-removed "red3")))
+     (set-face-foreground 'diff-added "green1")
+     (set-face-foreground 'diff-removed "red1")))
 
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "green4")
-     (set-face-foreground 'magit-diff-del "red3")))
+;; (eval-after-load 'magit
+;;   '(progn
+;;      (set-face-foreground 'magit-diff-add "green1")
+;;      (set-face-foreground 'magit-diff-del "red1")))
 
 ;; what's the deal, org? headers should be bold.
 (eval-after-load 'org
@@ -93,5 +93,6 @@
      (set-face-background 'hl-line "gray18")))
 (eval-after-load 'magit
   '(progn
+     (set-face-attribute 'magit-item-highlight nil :inherit nil)
      (set-face-foreground 'magit-item-highlight nil)
-     (set-face-background 'magit-item-highlight "gray18")))
+     (set-face-background 'magit-item-highlight nil)))
