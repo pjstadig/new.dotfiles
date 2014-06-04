@@ -214,3 +214,7 @@
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))
+
+(add-hook 'asm-mode-hook
+          (defun my-tab-indent ()
+            (setq fill-prefix nil)))
