@@ -109,7 +109,7 @@
         (goto-char (point-max))))))
 
 (eval-after-load 'scheme-mode
- '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
+  '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
 
 
 ;;; ocaml
@@ -214,3 +214,7 @@
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))
+
+(add-hook 'asm-mode-hook
+          (defun my-tab-indent ()
+            (setq fill-prefix nil)))
