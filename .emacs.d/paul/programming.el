@@ -109,7 +109,7 @@
         (goto-char (point-max))))))
 
 (eval-after-load 'scheme-mode
- '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
+  '(define-key scheme-mode-map (kbd "C-c C-d") 'chicken-doc))
 
 
 ;;; ocaml
