@@ -1,5 +1,7 @@
 ;;; general
 
+(add-hook 'magit-log-edit-mode-hook 'flyspell-mode)
+
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'prog-mode-hook 'idle-highlight-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
@@ -214,6 +216,9 @@
 
 (eval-after-load 'cc-mode
   '(define-key c-mode-map (kbd "C-c C-k") 'compile))
+
+
+;;; asm mode
 
 (add-hook 'asm-mode-hook
           (defun my-tab-indent ()
