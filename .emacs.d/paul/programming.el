@@ -75,7 +75,8 @@
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 (setq inferior-lisp-command "lein repl"
-      cider-repl-popup-stacktraces t)
+      cider-repl-popup-stacktraces nil
+      cider-repl-history-file "~/.nrepl-history")
 
 (add-to-list 'load-path "~/src/clojure-mode")
 (add-hook 'clojure-mode-hook 'paredit-mode)
