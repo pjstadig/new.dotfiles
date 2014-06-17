@@ -38,3 +38,7 @@
      (define-key paredit-mode-map (kbd "C-M-[") 'paredit-backward-barf-sexp)
      (define-key paredit-mode-map (kbd "C-M-}") 'paredit-forward-barf-sexp)
      (define-key paredit-mode-map (kbd "C-M-{") 'paredit-backward-barf-sexp)))
+
+;; keys for moving to prev/next code section (Form Feed; ^L)
+(global-set-key (kbd "<C-M-prior>") 'backward-page) ; Ctrl+Alt+PageUp
+(global-set-key (kbd "<C-M-next>") 'forward-page)   ; Ctrl+Alt+PageDown
