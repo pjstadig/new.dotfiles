@@ -77,6 +77,7 @@
 (setq inferior-lisp-command "lein repl"
       cider-repl-popup-stacktraces t)
 
+(add-to-list 'load-path "~/src/clojure-mode")
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 
