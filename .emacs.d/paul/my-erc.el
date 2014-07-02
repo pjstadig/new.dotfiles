@@ -60,3 +60,17 @@
   (setq erc-modified-channels-alist nil)
   (erc-modified-channels-update)
   (erc-modified-channels-display))
+
+(ignore-errors (load (expand-file-name "~/.znc-password.el")))
+
+(defun pjs-znc-connect ()
+  (interactive)
+  (if (boundp 'pjs-znc-password)
+      (progn
+        (erc-tls :server "irc.stadig.name"
+                 :nick "pjstadig_freenode"
+                 :password (concat "pjstadig/freenode:" pjs-znc-password))
+        (erc-tls :server "irc.stadig.name"
+                 :nick "pjstadig_sonian"
+                 :password (concat "pjstadig/sonian:" pjs-znc-password)))
+    (message "Missing znc password")))
