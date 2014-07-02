@@ -6,4 +6,4 @@ if [ ! -x $tarsnap ]; then
     exit 1
 fi
 
-$tarsnap -cvf "home-`date +\%Y\%m\%d`" /home/paul/.gnupg/ /home/paul/music/ /home/paul/pictures/ /home/paul/videos/ /home/paul/documents/
+$tarsnap -cvf "`date +\%Y\%m\%d`-home" /home/paul/.gnupg/ /home/paul/music/ /home/paul/pictures/ /home/paul/videos/ /home/paul/documents/
