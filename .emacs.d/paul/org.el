@@ -17,3 +17,11 @@
 (setq org-mobile-files nil)
 (setq org-mobile-inbox-for-pull (expand-file-name "~/org/inbox.org"))
 (setq org-mobile-force-id-on-agenda-items nil)
+
+(defun pjs-set-org-mode-whitespace-style ()
+  (setq whitespace-style '(face lines-tail tabs)))
+
+(add-hook 'org-mode-hook 'whitespace-mode)
+(add-hook 'org-mode-hook 'pjs-set-org-mode-whitespace-style)
+(add-hook 'org-mode-hook 'auto-fill-mode)
+(add-hook 'org-mode-hook 'flyspell-mode)
