@@ -1,5 +1,7 @@
 (ignore-errors (load (expand-file-name "~/.slack-password.el")))
 
-(defun pjs-slack ()
+(defun pjs-slack-connect ()
   (interactive)
-  (erc-tls :server "outpace.irc.slack.com" :password pjs-slack-password))
+  (if (boundp 'pjs-slack-password)
+      (erc-tls :server "outpace.irc.slack.com" :password pjs-slack-password)
+    (message "Missing slack password")))
