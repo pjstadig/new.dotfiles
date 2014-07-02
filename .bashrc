@@ -9,8 +9,10 @@
 # receiving LC_* env vars
 if [ ! -z "$SSH_CONNECTION" -a -z "$LC_TMUX_ATTACHED" ]; then
     export LC_TMUX_ATTACHED=1
-    exec tmux -S /tmp/$USER-tmux att
+    which tmux && exec tmux -S /tmp/$USER-tmux att
 fi
+
+[ -f $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases ] && source $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -120,6 +122,15 @@ fi
 
 if ! ssh-add -l | grep id_rsa &>/dev/null; then
     [ -f ~/.ssh/id_rsa ] && ssh-add ~/.ssh/id_rsa &>/dev/null
+fi
+
+if ! ssh-add -l | grep outpace_rsa &>/dev/null; then
+    [ -f ~/.ssh/outpace_rsa ] && ssh-add ~/.ssh/outpace_rsa &>/dev/null
+fi
+
+if [ -d $HOME/.rbenv/bin ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
 fi
 
 hostname=`uname -n`

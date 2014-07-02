@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 [ ! -e ~/.minecraft/minecraft.jar ] && echo "Please download minecraft and put it in ~/.minecraft/" && exit 1
 
