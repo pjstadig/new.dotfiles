@@ -23,7 +23,7 @@ if [ ! -e "$auth_sock" ]; then
     if [ -z "$SSH_AUTH_SOCK" ]; then
         eval `ssh-agent --eval`
     fi
-    ln -f "$SSH_AUTH_SOCK" "$auth_sock"
+    ln -sf "$SSH_AUTH_SOCK" "$auth_sock"
 else
     export SSH_KEEP_SOCK=1
 fi
