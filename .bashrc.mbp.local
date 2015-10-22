@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 if which derp >>/dev/null; then
     envfile=$(derp envfile)
-    if [ -e $envfile ]; then
-        source $envfile
+    if [ -e "$envfile" ]; then
+        source "$envfile"
     fi
 fi

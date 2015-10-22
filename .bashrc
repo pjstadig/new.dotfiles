@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export BASHRC=true
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -9,7 +11,7 @@
 # receiving LC_* env vars
 if [ ! -z "$SSH_CONNECTION" -a -z "$LC_TMUX_ATTACHED" ]; then
     export LC_TMUX_ATTACHED=1
-    which tmux && exec tmux -S /tmp/$USER-tmux att
+    #which tmux && exec tmux -S /tmp/$USER-tmux att
 fi
 
 [ -f $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases ] && source $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases
@@ -58,12 +60,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -76,11 +78,11 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -132,6 +134,11 @@ if [ -d $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
+
+#source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+#source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 hostname=`uname -n`
 if [ ! -z "$hostname" -a -f "$HOME/.bashrc.$hostname" ]; then

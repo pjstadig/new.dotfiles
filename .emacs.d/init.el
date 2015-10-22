@@ -15,6 +15,9 @@
       visible-bell t
       inhibit-startup-message t)
 
+(eval-after-load 'ispell
+  '(setq ispell-program-name "/usr/local/bin/aspell"))
+
 (when window-system
   (setq scroll-conservatively 1))
 

@@ -41,12 +41,28 @@ fi
 
 [ -e /etc/profile.d/nix.sh ] && source /etc/profile.d/nix.sh
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
-[ -d $HOME/src/outpace/universe ] && export STARWOOD_HOME=$HOME/src/outpace/universe
+
+# cust_home=$HOME/src/outpace/customer_mvp
+# guest_home=$HOME/src/outpace/starwood_guest
+
+# function set-cust-home {
+#     [ -d $cust_home ] && export STARWOOD_HOME=$cust_home && source $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases && gr && source-bashrc
+# }
+
+# function set-guest-home {
+#     [ -d $guest_home ] && export STARWOOD_HOME=$guest_home/universe && source $STARWOOD_HOME/common_utilities/setup/personalization/common.aliases && export STARWOOD_GUEST_HOME=$guest_home && gr && source-bashrc
+# }
+
+export ANSIBLE_COW_SELECTION=dragon
 
 hostname=`uname -n`
 if [ ! -z "$hostname" ] && [ -f "$HOME/.profile.$hostname" ]; then
     . "$HOME/.profile.$hostname"
 fi
+
+# if [ -d $guest_home ]; then
+#     export STARWOOD_HOME=$guest_home/universe && export STARWOOD_GUEST_HOME=$guest_home
+# fi
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
